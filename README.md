@@ -3,6 +3,8 @@ Bu proje; Greenweez (E-ticaret) ve Circle Parcel (Lojistik) verilerinin, Modern 
 
 🏗️ Veri Hattı (Data Pipeline) Mimarisi
 Proje, verinin kaynağından alınarak raporlanabilir hale gelmesine kadar olan tüm Modern ELT süreçlerini içerir:
+<img width="1835" height="732" alt="lineage_graph" src="https://github.com/user-attachments/assets/515c7e2b-7c33-4e94-bb36-ef49fed1292a" />
+
 
 Ingestion (Veri Alımı): Google Sheets ve Cloud Storage üzerinde bulunan ham veriler, Fivetran aracılığıyla otomatik olarak BigQuery'ye aktarılmaktadır.
 
