@@ -1,15 +1,42 @@
-Welcome to your new dbt project!
+🚀 Multi-Domain Data Platform (E-Commerce & Logistics)
+Bu proje; Greenweez (E-ticaret) ve Circle Parcel (Lojistik) verilerinin, Modern Data Stack araçları kullanılarak uçtan uca taşınması, modellenmesi ve raporlanması süreçlerini kapsamaktadır.
 
-### Using the starter project
+🏗️ Veri Hattı (Data Pipeline) Mimarisi
+Proje, verinin kaynağından alınarak raporlanabilir hale gelmesine kadar olan tüm Modern ELT süreçlerini içerir:
 
-Try running the following commands:
-- dbt run
-- dbt test
+Ingestion (Veri Alımı): Google Sheets ve Cloud Storage üzerinde bulunan ham veriler, Fivetran aracılığıyla otomatik olarak BigQuery'ye aktarılmaktadır.
 
+Warehouse: Google BigQuery
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [dbt community](https://getdbt.com/community) to learn from other analytics engineers
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+Transformation: dbt (Data Build Tool)
+
+Version Control: GitHub
+
+📁 Veri Modelleme Yapısı
+Modeller, dbt "best-practice" prensiplerine ve Medallion Architecture (Staging -> Intermediate -> Mart) yapısına uygun olarak kurgulanmıştır:
+
+1. Greenweez (E-Commerce)
+Staging: Fivetran üzerinden gelen ham verilerin temizlendiği ve standart veri tiplerine (casting) dönüştürüldüğü ilk katman.
+
+Intermediate: İş mantıklarının (Business Logic) uygulandığı ve tablolar arası karmaşık join işlemlerinin yapıldığı ara katman.
+
+Mart (Finance): Finansal raporlama ve KPI analizi için optimize edilmiş, son kullanıcıya hazır tablolar.
+
+2. Circle Parcel (Logistics)
+Lojistik ve sevkiyat operasyonlarının takibi için kurgulanan staging modellerini içerir.
+
+📂 Klasör Yapısı (Repository Structure)
+Plaintext
+models/
+├── greenweez/
+│   ├── staging/        # Veri temizleme (Fivetran sources)
+│   ├── intermediate/   # İş mantığı ve join operasyonları
+│   └── mart/finance/   # Raporlamaya hazır finansal tablolar
+└── Circle_parcel/
+    └── staging/        # Lojistik verileri ön hazırlık katmanı
+🚀 Öne Çıkan Özellikler
+Fivetran Automation: Veri kaynakları ile veri ambarı arasındaki senkronizasyon otomatik hale getirilmiştir.
+
+Data Quality: schema.yml üzerinden yönetilen otomatik testler (unique, not_null) ile veri bütünlüğü sağlanmaktadır.
+
+Modular Design: Farklı iş birimleri tek bir repo üzerinde, ölçeklenebilir ve izole şekilde yönetilmektedir.
